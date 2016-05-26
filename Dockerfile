@@ -1,10 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER David Gethings <dgethings@juniper.net>
 
-# define the build and ruby packages the app needs
-ENV BUILD_PACKAGES libmagickwand-dev
-ENV RUBY_PACKAGES ruby bundler
-
 # create and use app dir
 RUN mkdir /usr/app
 WORKDIR /usr/app
@@ -15,6 +11,10 @@ COPY Gemfile.lock /usr/app/
 
 # put the ruby script in the app dir
 COPY grapher.rb /usr/app
+
+# define the build and ruby packages the app needs
+ENV BUILD_PACKAGES libmagickwand-dev
+ENV RUBY_PACKAGES ruby bundler
 
 # Update and install all of the required packages.
 # At the end, remove the apt lists (the cache is auto cleaned)
