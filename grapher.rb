@@ -23,7 +23,7 @@ def graphme(title:, filename:, data:)
   g.write(filename)
 end
 
-%w(/usr/app/input /usr/app/output).each do |dir|
+%w(/usr/app/csv_files /usr/app/png_files).each do |dir|
   unless Dir.exists?(dir)
     end_path = dir.split('/').last
     puts "please mount #{dir} (e.g. -v $PWD/#{end_path}:#{dir})"
@@ -31,12 +31,12 @@ end
   end
 end
 
-if Dir['/usr/app/input/*'].empty?
+if Dir['/usr/app/csv_files/*'].empty?
   puts 'there are no csv files to process'
   exit
 end
 
-Find.find('/usr/app/input').each do |file|
+Find.find('/usr/app/csv_files').each do |file|
   next if file =~ /\._/
   next unless file =~ /.*\.csv$/
 
@@ -52,9 +52,9 @@ Find.find('/usr/app/input').each do |file|
   end
 
   basename = File.dirname(file).split('/').last
-  filename = "/usr/app/output/#{basename}"
+  filename = "/usr/app/png_files/#{basename}"
 
-  puts "===== Graphing #{File.dirname(file).split('/').last} ======"
+  puts "===== Graphing #{basename} ======"
   puts "Multicast Loss: #{mcast_loss.max}"
   puts "Unicast Loss: #{unicast_loss.max}"
   puts "\n"
