@@ -1,6 +1,8 @@
 # IxN Grapher
 IxN Grapher is a container that generates graphs from IxN traffic flow statistics. It will parse all csv files found within it's input directory, puts the resultant png files in it's output directory and then exit.
 
+[![](https://images.microbadger.com/badges/image/dgjnpr/ixn-grapher.svg)](https://microbadger.com/images/dgjnpr/ixn-grapher "Get your own image badge on microbadger.com")
+
 # Requirements
 That you have docker installed. To understand how to install Docker for your system please refer to the [Docker website](https://www.docker.com).
 
